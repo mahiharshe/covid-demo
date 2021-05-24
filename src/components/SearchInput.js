@@ -7,7 +7,6 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
-import AppButton from '../shared/ui/AppButton';
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -15,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Search() {
+export default function SearchInput({ ...rest }) {
   const classes = useStyles();
 
   return (
@@ -24,19 +23,15 @@ export default function Search() {
         fullWidth
         className={classes.margin}
         id="input-with-icon-textfield"
-        label="Keyskills, Designation, Companies"
-      />
-      <TextField
-        fullWidth
-        className={classes.margin}
-        id="input-with-icon-textfield"
-        label="Location"
-      />
-      <AppButton
-        fullWidth
-        className={classes.margin}
-        label="Search"
-        color="primary"
+        placeholder="Search Jobs"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          )
+        }}
+        {...rest}
       />
     </div>
   );
